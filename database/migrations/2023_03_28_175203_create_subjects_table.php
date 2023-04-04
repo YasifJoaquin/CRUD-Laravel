@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre', 200);
+            $table->string('clave', 8);
+            $table->string('ing', 3);
+            $table->integer('semestre');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }
