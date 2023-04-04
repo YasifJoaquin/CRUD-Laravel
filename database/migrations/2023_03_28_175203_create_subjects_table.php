@@ -15,12 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 200);
             $table->string('clave', 8);
-            $table->string('ing', 3);
+            $table->string('ingenieria', 3);
             $table->integer('semestre');
-            $table->foreignId('user_id')
-                ->constrained()
-                ->onUpdate('restrict')
-                ->onDelete('restrict');
             $table->timestamps();
         });
     }

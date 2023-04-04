@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
+            $table->string('tema', 300);
+            $table->integer('unidad');
+            $table->foreignId('subject_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cornellnote extends Model
+class Bug extends Model
 {
     use HasFactory;
 
-    //relacion con con los users
-    public function users(): BelongsTo
+    //Relacion con los users
+    public function users():BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    //relacion con las topics
-    public function topcis(): BelongsTo
+    //Relacion con los subjects
+    public function subjects():BelongsTo
     {
-        return $this->belongsTo(Topic::class);
+        return $this->belongsTo(Subject::class);
     }
+    
 }
