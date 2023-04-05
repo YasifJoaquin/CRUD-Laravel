@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -53,5 +55,11 @@ class User extends Authenticatable
     public function bugs(): HasMany
     {
         return $this->hasMany(Bug::class);
+    }
+
+    //Relacion de muchos a muchos con la tabla subjects
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class)->using(Relation::class);
     }
 }
