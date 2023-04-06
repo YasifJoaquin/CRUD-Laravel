@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator; //importar funciones de validacion de laravel
 use App\Models\Cornellnote;
+use App\Models\Topic;
 
 class CornellnoteController extends Controller
 {
@@ -74,26 +75,31 @@ class CornellnoteController extends Controller
         $detalle_nota=Cornellnote::find($id);
         //$notas = Cornellnote::where('id',auth()->user()->id)->get();
         //dd($id_nota);
-        /*
+        
         $notas = DB::table('cornellnotes')
             ->join('topics','cornellnotes.topic_id','=','topics.id')
             ->join('subjects','topics.subject_id','=','subjects.id')
-            ->where('cornellnotes.user_id', auth()->user()->id)
+            ->where('cornellnotes.id', $detalle_nota->id)
             ->get();
 
-        dd($notas);*/
-        return view('cornellnotes.show', compact('detalle_nota'));
+        //dd($notas);
+        //dd($detalle_nota);
+        return view('cornellnotes.show', compact('detalle_nota', 'notas'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
+        $detalle_nota=Cornellnote::find($id);
+        
         $notas = DB::table('cornellnotes')
             ->join('topics','cornellnotes.topic_id','=','topics.id')
             ->join('subjects','topics.subject_id','=','subjects.id')
-            ->where('cornellnotes.user_id', auth()->user()->id)->get();
+            ->where('cornellnotes.id', $detalle_nota->id)
+            ->get();
+        dd($notas);
         return view('cornellnotes.edit', compact('notas'));
 
     }
@@ -109,11 +115,11 @@ class CornellnoteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $nota=Cornellnote::find($id);
         $nota->delete();
 
-        return redirect('cornellnotes.index');
+        return redirect()->route('cornellnotes.index');
     }
 }
