@@ -64,7 +64,7 @@ class CornellnoteController extends Controller
         $nota->topic_id = $request->tema;
         $nota->save();
 
-        return redirect()->route('cornellnotes.index',$nota);
+        return redirect()->route('cornellnotes.index');
     }
 
     /**
@@ -96,11 +96,11 @@ class CornellnoteController extends Controller
         
         $notas = DB::table('cornellnotes')
             ->join('topics','cornellnotes.topic_id','=','topics.id')
-            ->join('subjects','topics.subject_id','=','subjects.id')
+            ->select('topics.tema','topics.unidad','cornellnotes.titulo','cornellnotes.PalabrasClave','cornellnotes.Texto','cornellnotes.Conclusion')
             ->where('cornellnotes.id', $detalle_nota->id)
             ->get();
-        dd($notas);
-        return view('cornellnotes.edit', compact('notas'));
+        //dd($notas);
+        return view('cornellnotes.edit', compact('detalle_nota','notas'));
 
     }
 
@@ -109,7 +109,30 @@ class CornellnoteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'titulo' => 'required',
+            'palabrasClave' => 'required',
+            'texto' => 'required',
+            'conclusion' => 'required',
+            'tema' => 'required'
+        ]);
+        //validación
+        if ($validator->fails()) {
+            return redirect("notas/$id/edit")
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        //inserción
+        $nota = Cornellnote::find($id);
+        $nota->titulo = $request->titulo;
+        $nota->PalabrasClave = $request->palabrasClave;
+        $nota->Texto = $request->texto;
+        $nota->Conclusion = $request->conclusion;
+        $nota->user_id = auth()->user()->id;
+        $nota->topic_id = $request->tema;
+        $nota->save();
+
+        return redirect()->route('cornellnotes.index');
     }
 
     /**

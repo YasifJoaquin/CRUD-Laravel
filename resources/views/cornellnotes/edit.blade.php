@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Asignaturas') }}
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Editar Nota') }}
         </h2>
     </x-slot>
 
@@ -27,44 +27,40 @@
                         <h1 class="text-xl font-bold text-white">Editar nota</h1>
                     </div>
                     <div class="p-4">
-                        <form action="{{ route('cornellnotes.store') }}" method="post">
+                        <form action="{{ url('cornellnotes/'.$detalle_nota->id) }}" method="post">
+                        @method("PATCH")
                         @csrf
                             <div class="mb-4">
                                 <label class="block text-gray-700 font-bold mb-2" for="titulo">
                                     Título
                                 </label>
-                                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="titulo" id="titulo" type="text" placeholder="Ingrese el título">
+                                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="titulo" id="titulo" type="text" value="{{ $detalle_nota->titulo}}">
                             </div>
                             <div class="mb-4">
                                 <label class="block text-gray-700 font-bold mb-2" for="palabrasClave">
                                     Palabras clave
                                 </label>
-                                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="palabrasClave" id="palabrasClave" type="text" placeholder="Ingrese las palabras clave separadas por comas">
+                                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="palabrasClave" id="palabrasClave" type="text" value="{{ $detalle_nota->PalabrasClave }}">
                             </div>
                             <div class="mb-4">
                                 <label class="block text-gray-700 font-bold mb-2" for="texto">
                                     Texto
                                 </label>
-                                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="texto" id="texto" rows="6" placeholder="Ingrese el texto"></textarea>
+                                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="texto" id="texto" rows="6"> {{ $detalle_nota->Texto }} </textarea>
                             </div>
                             <div class="mb-4">
                                 <label class="block text-gray-700 font-bold mb-2" for="conclusion">
                                 Conclusión
                                 </label>
-                                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="conclusion" id="conclusion" rows="3" placeholder="Ingrese la conclusión"></textarea>
+                                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="conclusion" id="conclusion" rows="3">{{ $detalle_nota->Conclusion }}</textarea>
                             </div>
 
-                            <!--<div class="mb-4">
-                                <label class="block text-gray-700 font-bold mb-2" for="temas">
-                                Temas
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-bold mb-2" for="texto">
+                                    Tema
                                 </label>
-                                <select class="block appearance-none w-full bg-gray-300 border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="tema" id="temas">
-                                    <option value="">Seleccione un tema</option>
-                                    @foreach($temas as $tema)
-                                    <option value="{{ $tema->id }}"> {{ $tema->tema }} </option>
-                                    @endforeach
-                                </select>
-                            </div>-->
+                                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="tema" id="texto" rows="6"> {{ $detalle_nota->topic_id }} </textarea>
+                            </div>
 
                             <div class="flex items-center justify-end">
                                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
