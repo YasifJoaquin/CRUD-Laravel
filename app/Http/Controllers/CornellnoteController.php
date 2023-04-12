@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator; //importar funciones de validacion de laravel
 use App\Models\Cornellnote;
 use App\Models\Topic;
+use App\Models\Subject;
 
 class CornellnoteController extends Controller
 {
@@ -16,7 +17,14 @@ class CornellnoteController extends Controller
      */
     public function index()
     {
-        $notas = Cornellnote::where('user_id',auth()->user()->id)->get();
+        //$notas = Cornellnote::where('user_id',auth()->user()->id)->get();
+        //dd($notas);
+        $notas =  DB::table('cornellnotes')
+            ->join('topics','cornellnotes.topic_id','=','topics.id')
+            ->join('subjects','topics.subject_id','=','subjects.id')
+            ->select('subjects.nombre','cornellnotes.titulo','cornellnotes.id')
+            ->where('cornellnotes.user_id',auth()->user()->id)
+            ->get();
         //dd($notas);
         return view('cornellnotes.index', compact('notas'));
     }
