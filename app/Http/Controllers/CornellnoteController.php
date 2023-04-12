@@ -31,7 +31,6 @@ class CornellnoteController extends Controller
             ->select('topics.id', 'topics.tema')
             ->where('cornellnotes.user_id', auth()->user()->id)
             ->get();
-        
         //dd($temas);
         return view('cornellnotes.create', compact('temas'));
     }

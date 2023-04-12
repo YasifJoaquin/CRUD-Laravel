@@ -20,6 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'ingenieria'=>fake()->randomElement(['isc','ier','iem','ii','ie']),
+            'semestre'=>fake()->numberBetween(1, 9),
             //'matricula'=>fake()->randomDigitNotNull(8),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

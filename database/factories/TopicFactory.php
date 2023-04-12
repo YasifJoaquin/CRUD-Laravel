@@ -18,7 +18,7 @@ class TopicFactory extends Factory
     {
         return [
             'tema'=>fake()->sentence(),
-            'unidad'=>fake()->randomDigitNot([7,8,9])
+            'unidad'=>fake()->randomElement([7, 8, 9])
         ];
     }
 }
