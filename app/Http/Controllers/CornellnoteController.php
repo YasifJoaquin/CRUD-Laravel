@@ -117,26 +117,30 @@ class CornellnoteController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'titulo' => 'required',
+            //'titulo' => 'required',
             'palabrasClave' => 'required',
-            'texto' => 'required',
+            //'texto' => 'required',
             'conclusion' => 'required',
-            'tema' => 'required'
+            //'tema' => 'required'
         ]);
         //validación
         if ($validator->fails()) {
-            return redirect("notas/$id/edit")
+            return redirect("cornellnotes/$id/edit")
                         ->withErrors($validator)
                         ->withInput();
         }
         //inserción
+        $detalle_nota=Cornellnote::find($id);
+        //dd($detalle_nota);
+
+
         $nota = Cornellnote::find($id);
-        $nota->titulo = $request->titulo;
+        $nota->titulo = $detalle_nota->titulo;
         $nota->PalabrasClave = $request->palabrasClave;
-        $nota->Texto = $request->texto;
+        $nota->Texto = $detalle_nota->Texto;
         $nota->Conclusion = $request->conclusion;
         $nota->user_id = auth()->user()->id;
-        $nota->topic_id = $request->tema;
+        $nota->topic_id = $detalle_nota->topic_id;
         $nota->save();
 
         return redirect()->route('cornellnotes.index');

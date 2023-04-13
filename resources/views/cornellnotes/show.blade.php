@@ -8,37 +8,37 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="bg-yellow-200 rounded-md overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-gray-800 rounded-md overflow-hidden shadow-sm sm:rounded-lg">
 
                     <div class="grid grid-rows-1 sm:grid-rows-4 grid-cols-1 sm:grid-cols-6 gap-2 p-5">
-                        <div class="bg-pink-500 col-span-2 text-center px-4 py-2 rounded-lg">
+                        <div class="bg-purple-800 col-span-2 text-gray-200 text-center px-4 py-2 rounded-lg">
                             <span class="font-bold"> Titulo: </span> <br>
                             {{ $detalle_nota->titulo }}
                         </div>
 
-                        <div class="bg-pink-500 col-span-4 row-span-5 text-justify px-4 py-2 rounded-lg">
+                        <div class="bg-purple-800 col-span-4 row-span-5 text-gray-200 text-justify px-4 py-2 rounded-lg">
                             <span class="font-bold"> Texto: </span> <br>
                             {{ $detalle_nota->Texto }}
                         </div>
 
-                        <div class="bg-pink-500 col-span-2 row-span-4 text-center px-4 py-2 rounded-lg">
+                        <div class="bg-purple-800 col-span-2 row-span-4 text-gray-200 text-center px-4 py-2 rounded-lg">
                             <span class="font-bold"> Palabras Clave: </span> <br>
                             {{ $detalle_nota->PalabrasClave }}
                         </div>
 
                         @foreach ($notas as $nota)
-                        <div class="bg-pink-500 col-span-1 row-span-1 text-center px-4 py-2 rounded-lg">
+                        <div class="bg-purple-800 col-span-1 row-span-1 text-gray-200 text-center px-4 py-2 rounded-lg">
                             <span class="font-bold"> Unidad: </span> <br>
                             {{ $nota->unidad }}
                         </div>
 
-                        <div class="bg-pink-500 col-span-1 row-span-1 text-center px-4 py-2 rounded-lg">
+                        <div class="bg-purple-800 col-span-1 row-span-1 text-gray-200 text-center px-4 py-2 rounded-lg">
                             <span class="font-bold"> Tema: </span> <br>
                             {{ $nota->tema }}
                         </div>
                         @endforeach
 
-                        <div class="bg-pink-500 col-span-4 text-justify px-4 py-2 rounded-lg">
+                        <div class="bg-purple-800 col-span-4 text-gray-200 text-justify px-4 py-2 rounded-lg">
                             <span class="font-bold"> Conclusion: </span> <br>
                             {{ $detalle_nota->Conclusion }}
                         </div>
@@ -73,4 +73,5 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>
