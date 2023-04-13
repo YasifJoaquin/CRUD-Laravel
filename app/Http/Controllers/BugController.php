@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Bug;
+use App\Models\Subject;
+
+use Illuminate\Support\Facades\Validator;
+
 class BugController extends Controller
 {
     /**
@@ -11,7 +16,9 @@ class BugController extends Controller
      */
     public function index()
     {
-        //
+        $bugs=Bug::where('user_id',auth()->user()->id)->get();
+        //dd($bugs);
+        return view('bugs.index', compact('bugs'));
     }
 
     /**
@@ -19,7 +26,9 @@ class BugController extends Controller
      */
     public function create()
     {
-        //
+        $asignatura= Subject::where('ingenieria',auth()->user()->ingenieria)->get();
+        //dd($asignatura);
+        return view('bugs.create', compact('asignatura'));
     }
 
     /**
@@ -27,15 +36,41 @@ class BugController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validator = Validator::make($request->all(), [
+            'descripcion' => 'required',
+            'codigo' => 'required',
+            'solucion' => 'required',
+            'plataforma'=>'required',
+            'estado' => 'required',
+            'asignatura'=>'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('bugs/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $bug=new Bug();
+        $bug->descripcion=$request->descripcion;
+        $bug->codigo=$request->codigo;
+        $bug->solucion=$request->solucion;
+        $bug->estado=$request->estado;
+        $bug->plataforma=$request->plataforma;
+        $bug->user_id=auth()->user()->id;
+        $bug->subject_id=$request->asignatura;
+        $bug->save();
+        return redirect()->route('bugs.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $detalle_bug=Bug::find($id);
+        return view('bugs.show', compact('detalle_bug'));
     }
 
     /**
@@ -59,6 +94,8 @@ class BugController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $bug=Bug::find($id);
+        $bug->delete();
+        return redirect()->route('bugs.index');
     }
 }

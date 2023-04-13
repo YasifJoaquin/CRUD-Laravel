@@ -34,12 +34,22 @@ class CornellnoteController extends Controller
      */
     public function create()
     {
+        /*
         $temas = DB::table('cornellnotes')
             ->join('topics', 'cornellnotes.topic_id', '=', 'topics.id')
             ->select('topics.id', 'topics.tema')
             ->where('cornellnotes.user_id', auth()->user()->id)
             ->get();
         //dd($temas);
+        */
+
+        $temas = DB::table('subjects')
+        ->join('topics', 'subjects.id', '=', 'topics.subject_id')
+        ->select('topics.id', 'topics.tema')
+        ->where('subjects.ingenieria', auth()->user()->ingenieria)
+        ->get();
+        //dd($temas);
+
         return view('cornellnotes.create', compact('temas'));
     }
 

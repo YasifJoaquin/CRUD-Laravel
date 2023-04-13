@@ -18,7 +18,7 @@ class Cornellnote extends Model
     }
 
     //relacion con las topics
-    public function topci(): BelongsTo
+    public function topic(): BelongsTo
     {
         return $this->belongsTo(Topic::class);
     }

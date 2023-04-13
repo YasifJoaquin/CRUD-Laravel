@@ -20,9 +20,12 @@ class CornellnoteFactory extends Factory
     {
         $topic_id = Topic::all();
 
+        $palabrasClave = $this->faker->words(7);
+        $palabrasClaveSeparadasPorComas = implode(',', $palabrasClave);
+
         return [
             'titulo'=>fake()->sentence(),
-            'PalabrasClave'=>fake()->sentence(),
+            'PalabrasClave'=>$palabrasClaveSeparadasPorComas,
             'Texto'=>fake()->sentence(),
             'Conclusion'=>fake()->sentence(),
             'topic_id'=>$topic_id->random()

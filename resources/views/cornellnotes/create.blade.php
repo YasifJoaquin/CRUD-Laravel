@@ -56,7 +56,7 @@
                                 <label class="block text-gray-300 font-bold mb-2" for="temas">
                                     Temas
                                 </label>
-                                <select class="block appearance-none w-full bg-gray-300 border border-gray-200 text-gray-900 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="tema" id="temas">
+                                <select class="block appearance-none w-full bg-gray-300 border border-gray-200 text-gray-900 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="tema" id="tema">
                                     <option value="">Seleccione un tema</option>
                                     @foreach($temas as $tema)
                                     <option value="{{ $tema->id }}"> {{ $tema->tema }} </option>

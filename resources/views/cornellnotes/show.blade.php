@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="col-span-1 font-bold text-center">
-                            <form class="inline-block" action="{{ url('cornellnotes/'.$detalle_nota->id) }}" method="POST">
+                            <form class="inline-block" action="{{ route('cornellnotes.destroy', $detalle_nota->id) }}" method="POST">
                                 @method("DELETE")
                                 @csrf
                                 <button type="submit" class="bg-red-500 text-white px-3 py-2 rounded hover:bg-purple-600">

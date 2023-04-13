@@ -54,7 +54,7 @@
                         <label class="block text-gray-700 font-bold mb-2" for="texto">
                             Tema
                         </label>
-                        <textarea class="w-full bg-gray-100 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="tema" id="texto" rows="6" disabled>{{ $detalle_nota->topic_id }}</textarea>
+                        <input class="w-full bg-gray-100 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="tema" id="texto" rows="6" disabled value="{{$detalle_nota->topic->tema}}"/>
                     </div>
                     <div class="mb-4 flex items-center justify-end">
                         <button class="bg-purple-800 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">

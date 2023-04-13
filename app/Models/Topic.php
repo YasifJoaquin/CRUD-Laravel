@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Topic extends Model
 {
     use HasFactory;
 
     //Relacion de pertenencia con subjects
-    public function subjects():BelongsTo
+    public function subject():BelongsTo
     {
         return $this->belongsTo(Subject::class);
     }
