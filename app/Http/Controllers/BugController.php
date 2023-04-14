@@ -78,7 +78,10 @@ class BugController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $bug=Bug::find($id);
+        //de aqui se le envian los datos a la view de edith
+        //dd($bug);
+        return view('bugs.edit',compact('bug'));
     }
 
     /**
@@ -86,7 +89,33 @@ class BugController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'descripcion' => 'required',
+            //'codigo' => 'required',
+            'solucion' => 'required',
+            //'plataforma' => 'required',
+            'estado' => 'required',
+            //'asignatura' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect("bugs/$id/edit")
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
+        $dbug=Bug::find($id);
+
+        $bug = Bug::find($id);
+        $bug->descripcion=$request->descripcion;
+        $bug->codigo=$dbug->codigo;
+        $bug->solucion=$request->solucion;
+        $bug->plataforma=$dbug->plataforma;
+        $bug->estado=$request->estado;
+        $bug->user_id = auth()->user()->id;
+        $bug->subject_id=$dbug->subject_id;
+        $bug->save();
+        return redirect()->route('bugs.index');
     }
 
     /**
