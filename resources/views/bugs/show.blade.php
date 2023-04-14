@@ -15,7 +15,7 @@
                                 <label class="block text-black font-bold mb-2" for="codigo">
                                     Código de Error
                                 </label>
-                                <p class="text-green-600 font-bold">{{ $detalle_bug->codigo }}</p>
+                                <p class="text-green-500 font-bold">{{ $detalle_bug->codigo }}</p>
                             </div>
                             <div class="mb-4">
                                 <label class="block text-black font-bold mb-2" for="fecha">

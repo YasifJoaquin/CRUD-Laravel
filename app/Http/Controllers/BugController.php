@@ -18,6 +18,11 @@ class BugController extends Controller
     {
         $bugs=Bug::where('user_id',auth()->user()->id)->get();
         //dd($bugs);
+
+        //-----------------------------------------------
+        $this->authorize('viewany',Cornellnote::class);
+        //-----------------------------------------------
+
         return view('bugs.index', compact('bugs'));
     }
 
@@ -28,6 +33,11 @@ class BugController extends Controller
     {
         $asignatura= Subject::where('ingenieria',auth()->user()->ingenieria)->get();
         //dd($asignatura);
+
+        //-----------------------------------------------
+        $this->authorize('create', Cornellnote::class);
+        //-----------------------------------------------
+
         return view('bugs.create', compact('asignatura'));
     }
 
@@ -36,7 +46,10 @@ class BugController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //-----------------------------------------------
+        $this->authorize('create', Cornellnote::class);
+        //-----------------------------------------------
+
         $validator = Validator::make($request->all(), [
             'descripcion' => 'required',
             'codigo' => 'required',
@@ -70,6 +83,11 @@ class BugController extends Controller
     public function show($id)
     {
         $detalle_bug=Bug::find($id);
+
+        //------------------------------------
+        $this->authorize('view', $detalle_bug);
+        //------------------------------------
+
         return view('bugs.show', compact('detalle_bug'));
     }
 
@@ -81,6 +99,11 @@ class BugController extends Controller
         $bug=Bug::find($id);
         //de aqui se le envian los datos a la view de edith
         //dd($bug);
+
+        //------------------------------------
+        $this->authorize('update', $bug);
+        //------------------------------------
+
         return view('bugs.edit',compact('bug'));
     }
 
@@ -106,6 +129,10 @@ class BugController extends Controller
         
         $dbug=Bug::find($id);
 
+        //------------------------------------
+        $this->authorize('update', $dbug);
+        //------------------------------------
+
         $bug = Bug::find($id);
         $bug->descripcion=$request->descripcion;
         $bug->codigo=$dbug->codigo;
@@ -124,7 +151,13 @@ class BugController extends Controller
     public function destroy(string $id)
     {
         $bug=Bug::find($id);
+
+        //------------------------------------
+        $this->authorize('delete', $bug);
+        //------------------------------------
+
         $bug->delete();
+
         return redirect()->route('bugs.index');
     }
 }
