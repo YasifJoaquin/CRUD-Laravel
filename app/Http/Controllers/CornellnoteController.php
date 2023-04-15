@@ -72,11 +72,11 @@ class CornellnoteController extends Controller
         //-----------------------------------------------
 
         $validator = Validator::make($request->all(), [
-            'titulo' => 'required',
+            'titulo' => 'required|max:150',
             'palabrasClave' => 'required',
-            'texto' => 'required',
+            'texto' => 'required|max:255',
             'conclusion' => 'required',
-            'tema' => 'required'
+            'tema' => 'required' // "integer" validacion de que sea solo numero no necesaria
         ]);
         //validación
         if ($validator->fails()) {

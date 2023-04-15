@@ -51,12 +51,12 @@ class BugController extends Controller
         //-----------------------------------------------
 
         $validator = Validator::make($request->all(), [
-            'descripcion' => 'required',
-            'codigo' => 'required',
-            'solucion' => 'required',
-            'plataforma'=>'required',
-            'estado' => 'required',
-            'asignatura'=>'required'
+            'descripcion' => 'required|string|max:255',
+            'codigo' => 'required|string|max:100',
+            'solucion' => 'required|strin|max:255',
+            'plataforma'=>'required|string|max:100',
+            'estado' => 'required', // "integer" validacion de que sea solo numero no necesaria
+            'asignatura'=>'required' // "integer" validacion de que sea solo numero no necesaria
         ]);
 
         if ($validator->fails()) {
@@ -113,11 +113,11 @@ class BugController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'descripcion' => 'required',
+            'descripcion' => 'required|string|max:255',
             //'codigo' => 'required',
-            'solucion' => 'required',
+            'solucion' => 'required|strin|max:255',
             //'plataforma' => 'required',
-            'estado' => 'required',
+            'estado' => 'required', // "integer" validacion de que sea solo numero no necesaria
             //'asignatura' => 'required',
         ]);
 
