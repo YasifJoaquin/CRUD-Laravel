@@ -53,7 +53,7 @@ class BugController extends Controller
         $validator = Validator::make($request->all(), [
             'descripcion' => 'required|string|max:255',
             'codigo' => 'required|string|max:100',
-            'solucion' => 'required|strin|max:255',
+            'solucion' => 'required|string|max:255',
             'plataforma'=>'required|string|max:100',
             'estado' => 'required', // "integer" validacion de que sea solo numero no necesaria
             'asignatura'=>'required' // "integer" validacion de que sea solo numero no necesaria
@@ -114,11 +114,8 @@ class BugController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'descripcion' => 'required|string|max:255',
-            //'codigo' => 'required',
-            'solucion' => 'required|strin|max:255',
-            //'plataforma' => 'required',
-            'estado' => 'required', // "integer" validacion de que sea solo numero no necesaria
-            //'asignatura' => 'required',
+            'solucion' => 'required|string|max:255',
+            'estado' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -127,20 +124,16 @@ class BugController extends Controller
                         ->withInput();
         }
         
-        $dbug=Bug::find($id);
-
-        //------------------------------------
-        $this->authorize('update', $dbug);
-        //------------------------------------
-
         $bug = Bug::find($id);
-        $bug->descripcion=$request->descripcion;
-        $bug->codigo=$dbug->codigo;
-        $bug->solucion=$request->solucion;
-        $bug->plataforma=$dbug->plataforma;
-        $bug->estado=$request->estado;
+
+        //------------------------------------
+        $this->authorize('update', $bug);
+        //------------------------------------
+
+        $bug->descripcion = $request->descripcion;
+        $bug->solucion = $request->solucion;
+        $bug->estado = $request->estado;
         $bug->user_id = auth()->user()->id;
-        $bug->subject_id=$dbug->subject_id;
         $bug->save();
         return redirect()->route('bugs.index');
     }

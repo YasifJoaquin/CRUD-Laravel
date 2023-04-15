@@ -36,7 +36,7 @@
                         <label class="block text-gray-700 font-bold mb-2" for="palabrasClave">
                             Palabras clave
                         </label>
-                        <input class="w-full bg-gray-300 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="palabrasClave" id="palabrasClave" type="text" value="{{ $detalle_nota->PalabrasClave }}">
+                        <input class="w-full bg-gray-300 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="palabrasClave" id="palabrasClave" type="text" value="{{ implode(', ', $detalle_nota->PalabrasClave) }}">
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2" for="texto">
