@@ -6,7 +6,7 @@
         <title>Error 419</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
-    <body class="bg-gray-100 flex items-center justify-center h-screen">
+    <body class="bg-gray-800 flex items-center justify-center h-screen">
         <div class="bg-white border rounded-lg overflow-hidden max-w-sm mx-auto">
         <div class="py-4 px-6">
             <div class="flex items-center justify-center">

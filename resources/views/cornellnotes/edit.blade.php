@@ -30,7 +30,7 @@
                         <label class="block text-gray-700 font-bold mb-2" for="titulo">
                             Título
                         </label>
-                        <input class="w-full bg-blue-700 font-bold text-gray-200 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="titulo" id="titulo" type="text" value="{{ $detalle_nota->titulo}}" disabled>
+                        <input class="w-full bg-blue-900 font-bold text-gray-200 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="titulo" id="titulo" type="text" value="{{ $detalle_nota->titulo}}" disabled>
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2" for="palabrasClave">
@@ -42,7 +42,7 @@
                         <label class="block text-gray-700 font-bold mb-2" for="texto">
                             Texto
                         </label>
-                        <textarea class="w-full bg-blue-700 font-bold text-gray-200 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="texto" id="texto" rows="6" disabled>{{ $detalle_nota->Texto }}</textarea>
+                        <textarea class="w-full bg-blue-900 font-bold text-gray-200 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="texto" id="texto" rows="6" disabled>{{ $detalle_nota->Texto }}</textarea>
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2" for="conclusion">
@@ -54,16 +54,9 @@
                         <label class="block text-gray-700 font-bold mb-2" for="texto">
                             Tema
                         </label>
-                        <input class="w-full bg-blue-700 font-bold text-gray-200 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="tema" id="texto" rows="6" disabled value="{{$detalle_nota->topic->tema}}"/>
+                        <input class="w-full bg-blue-900 font-bold text-gray-200 border border-gray-400 p-2 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" name="tema" id="texto" rows="6" disabled value="{{$detalle_nota->topic->tema}}"/>
                     </div>
-                    <div class="mb-4 flex items-center justify-end">
-                        <button class="bg-blue-500 hover:bg-blue-600 text-gray-200 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                            Guardar
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block mr-2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                            </svg>
-                        </button>
-                    </div>
+                    <x-guardar></x-guardar>
                 </div>
             </div>
         </div>

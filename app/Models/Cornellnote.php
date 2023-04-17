@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+use Carbon\Carbon;
+
 class Cornellnote extends Model
 {
     use HasFactory;
@@ -38,6 +40,11 @@ class Cornellnote extends Model
     public function getConclusionAttribute($value)
     {
         return strtoupper($value);
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->isoFormat('dddd D [de] MMMM [del] YYYY');
     }
     //------------------------------
 

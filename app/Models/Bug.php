@@ -52,7 +52,7 @@ class Bug extends Model
         // Definimos el accessor para el campo "created_at"
     public function getCreatedAtAttribute($value)
     {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y');
+        return Carbon::parse($value)->isoFormat('dddd D [de] MMMM [del] YYYY');
     }
         // los Estados se mostraran como strings dependiendo el numero
     public function getEstadoAttribute($value)

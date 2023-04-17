@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg p-8">
+            <div class="bg-purple-900 overflow-hidden shadow-sm sm:rounded-lg p-8">
                 @if ($errors->any())
                     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-5" role="alert">
                         @foreach($errors->all() as $error)

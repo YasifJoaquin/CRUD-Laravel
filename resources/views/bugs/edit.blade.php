@@ -28,7 +28,7 @@
                 @csrf
                     <div class="flex flex-col space-y-1">
                         <label for="codigo" class="text-white font-medium">Código</label>
-                        <input type="text" name="codigo" id="codigo" class="py-2 px-3 border bg-purple-700 font-bold text-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500" value="{{ $bug->codigo }}" disabled>
+                        <input type="text" name="codigo" id="codigo" class="py-2 px-3 border bg-purple-900 font-bold text-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500" value="{{ $bug->codigo }}" disabled>
                     </div>
 
                     <div class="flex flex-col space-y-1">
@@ -55,23 +55,16 @@
 
                     <div class="flex flex-col space-y-1">
                         <label for="plataforma" class="text-white font-medium">Plataforma</label>
-                        <input type="text" name="plataforma" id="plataforma" class="py-2 px-3 border bg-purple-700 font-bold text-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500" value="{{ $bug->plataforma }}" disabled>
+                        <input type="text" name="plataforma" id="plataforma" class="py-2 px-3 border bg-purple-900 font-bold text-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500" value="{{ $bug->plataforma }}" disabled>
                     </div>
 
                     <div class="flex flex-col space-y-1">
                         <label for="asignatura" class="text-white font-medium">Asignatura</label>
-                        <input class="py-2 px-3 border bg-purple-700 font-bold text-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500" name="asignatura" id="asignatura" rows="6" value="{{$bug->subject->nombre}}" disabled/>
+                        <input class="py-2 px-3 border bg-purple-900 font-bold text-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500" name="asignatura" id="asignatura" rows="6" value="{{$bug->subject->nombre}}" disabled/>
                     </div>
                     <br>
                     <br>
-                    <div class="mb-4 flex items-center justify-end">
-                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                            Guardar
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block mr-2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                            </svg>
-                        </button>
-                    </div>
+                    <x-guardar></x-guardar>
                 </form>
             </div>
         </div>
