@@ -52,6 +52,7 @@ class CornellnoteController extends Controller
         ->join('topics', 'subjects.id', '=', 'topics.subject_id')
         ->select('topics.id', 'topics.tema')
         ->where('subjects.ingenieria', auth()->user()->ingenieria)
+        ->where('subjects.semestre', auth()->user()->semestre)
         ->get();
         //dd($temas);
 

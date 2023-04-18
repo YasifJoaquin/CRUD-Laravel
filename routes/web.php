@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CornellnoteController;
 use App\Http\Controllers\BugController;
+use App\Http\Controllers\SubjectController;
 
 use App\Models\Cornellnote;
 use App\Models\Bug;
@@ -35,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/asignaturas', [SubjectController::class,'index'])->name('asignaturas');
 });
 
 //Rutas del crud de Notas

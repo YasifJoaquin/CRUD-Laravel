@@ -27,7 +27,7 @@
                 @csrf
                     <div class="flex flex-col space-y-1">
                         <label for="descripcion" class="text-white font-medium">Descripción del Bug</label>
-                        <input type="text" name="descripcion" id="descripcion" class="py-2 px-3 border bg-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        <textarea name="descripcion" id="descripcion" cols="30" rows="5" class="py-2 px-3 border bg-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500"></textarea>
                     </div>
 
                     <div class="flex flex-col space-y-1">
@@ -37,7 +37,7 @@
 
                     <div class="flex flex-col space-y-1">
                         <label for="solucion" class="text-white font-medium">Solución</label>
-                        <input type="text" name="solucion" id="solucion" class="py-2 px-3 border bg-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        <textarea name="solucion" id="solucion" cols="30" rows="3" class="py-2 px-3 border bg-gray-200 rounded-md border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500"></textarea>
                     </div>
 
                     <div class="flex flex-col space-y-1">

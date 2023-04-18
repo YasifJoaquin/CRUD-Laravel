@@ -18,6 +18,12 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('asignaturas')" :active="request()->routeIs('asignaturas')">
+                        {{ __('Asignaturas') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('cornellnotes.index')" :active="request()->routeIs('cornellnotes.index')">
                         {{ __('Notas') }}
                     </x-nav-link>
@@ -81,6 +87,24 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('asignaturas')" :active="request()->routeIs('asignaturas')">
+                {{ __('Asignaturas') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('cornellnotes.index')" :active="request()->routeIs('cornellnotes.index')">
+                {{ __('Notas') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('bugs.index')" :active="request()->routeIs('bugs.index')">
+                {{ __('Bugs') }}
             </x-responsive-nav-link>
         </div>
 

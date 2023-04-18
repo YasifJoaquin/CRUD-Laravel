@@ -22,8 +22,8 @@
                 <tbody class="divide-y divide-gray-700">
                     @foreach($notas as $nota)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"> {{ $nota->titulo }} </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"> {{ $nota->nombre }} </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-400"> {{ $nota->titulo }} </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-500"> {{ $nota->nombre }} </td>
                         <x-ver-nota :id="$nota->id"></x-ver-nota>
                     </tr>
                     @endforeach

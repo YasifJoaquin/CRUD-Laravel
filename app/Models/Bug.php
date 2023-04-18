@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use Carbon\Carbon;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 class Bug extends Model
 {
     use HasFactory;
